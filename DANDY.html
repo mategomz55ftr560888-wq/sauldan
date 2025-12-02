@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gorras Dandy — Colección</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --accent:#ff6b6b;
+      --accent2:#ffd166;
+      --muted:#9aa6b2;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #071020 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px;
+    }
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      max-width:1100px;margin:0 auto 28px;padding:18px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;box-shadow:0 6px 30px rgba(2,6,23,0.6);
+    }
+    .brand{
+      display:flex;align-items:center;gap:14px
+    }
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#081018;font-size:18px;box-shadow:0 6px 18px rgba(255,107,107,0.12);
+    }
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted)}
+
+    .container{max-width:1100px;margin:20px auto 80px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:16px;padding:14px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+    }
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    .cap-img{height:170px;border-radius:12px;background-size:cover;background-position:center;margin-bottom:12px;box-shadow:inset 0 -30px 80px rgba(0,0,0,0.35)}
+    .cap-title{display:flex;align-items:center;justify-content:space-between}
+    .cap-title h3{margin:0;font-size:18px}
+    .price{font-weight:700;color:var(--accent2)}
+    .desc{color:var(--muted);font-size:13px;margin-top:8px}
+
+    .actions{display:flex;align-items:center;gap:10px;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .15s}
+    .btn:active{transform:scale(.98)}
+    .btn svg{width:18px;height:18px;display:block}
+    .like.on{background:linear-gradient(90deg, rgba(255,107,107,0.12), rgba(255,107,107,0.06));border-color:rgba(255,107,107,0.22);}
+    .dislike.on{background:linear-gradient(90deg, rgba(109,122,255,0.06), rgba(109,122,255,0.03));border-color:rgba(109,122,255,0.16);}
+
+    .counts{margin-left:8px;font-weight:700}
+
+    /* header badges */
+    .badge{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+
+    /* hero */
+    .hero{max-width:1100px;margin:0 auto 18px;padding:20px;border-radius:14px}
+
+    footer{max-width:1100px;margin:50px auto 0;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:600px){body{padding:18px}.cap-img{height:140px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">GD</div>
+      <div>
+        <h1>Gorras Dandy</h1>
+        <p class="lead">Colección limited — estilo urbano & clásico</p>
+      </div>
+    </div>
+    <div class="badge" id="totalVotes">Likes: 0 · Dislikes: 0</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2 style="margin-bottom:10px;font-size:24px;color:#ffd166">Bienvenido a Gorras Dandy</h2>
+      <p style="margin:0 0 10px;color:var(--muted);font-size:15px;line-height:1.6">
+        En Gorras Dandy combinamos estilo urbano, clase y comodidad. Cada pieza de nuestra colección
+        está pensada para quienes buscan destacar sin perder la esencia. Materiales premium, diseños
+        exclusivos y una identidad única hacen que nuestras gorras destaquen en cualquier outfit.
+      </p>
+      <p style="margin:0;color:var(--muted);font-size:15px;line-height:1.6">
+        Explora nuestra selección y vota tus favoritas con like o dislike. Tu opinión ayuda a decidir
+        qué modelos se mantienen, cuáles regresan y qué nuevos diseños llegan a la colección.
+      </p>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section style="margin:40px 0;padding:24px;background:var(--glass);border:1px solid rgba(255,255,255,0.04);border-radius:16px;backdrop-filter:blur(6px)">
+      <h2 style="font-size:22px;margin-bottom:10px;color:var(--accent2)">Sobre Nosotros</h2>
+      <p style="color:var(--muted);line-height:1.6;font-size:15px">
+        Gorras Dandy nace con la misión de elevar el estilo urbano llevándolo a un nivel superior.
+        Nuestros diseños combinan elementos clásicos con detalles modernos, resultando en piezas únicas
+        que destacan por su calidad y presencia. Nos apasiona crear gorras con personalidad, pensadas
+        para quienes buscan identidad, confort y un look impecable.
+      </p>
+    </section>
+
+    <!-- Sección Historia de la Marca -->
+    <section style="margin:40px 0;padding:24px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:16px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 30px rgba(0,0,0,0.2)">
+      <h2 style="font-size:22px;margin-bottom:10px;color:#ff6b6b">Historia de la Colección</h2>
+      <p style="color:var(--muted);line-height:1.7;font-size:15px">
+        Todo comenzó con un diseño simple: una gorra negra clásica hecha a mano. Pronto llamó la
+        atención por su textura premium y su acabado limpio. De ahí se creó la primera colección
+        limitada, inspirada en las calles, en la moda retro y en la cultura del lifestyle moderno.
+        Desde entonces, Gorras Dandy ha ido creciendo, agregando nuevos estilos, técnicas de bordado
+        y materiales exclusivos que hoy forman parte de nuestras ediciones especiales.
+      </p>
+    </section>
+
+   
+    <style>
+      @keyframes zoom {
+        from { transform:scale(1); }
+        to { transform:scale(1.12); }
+      }
+    </style>
+
+    <section class="grid"" id="catalog">
+      <!-- cards renderizados por JS -->
+    </section>
+
+   
+  </main>
+
+  <script>
+    // Datos de ejemplo — cambia imágenes y textos aquí
+    const gorras = [
+      { id: 'g1', nombre: 'Dandy Classic Negro', desc: 'Tela premium, visera curva, logo bordado', precio: 420, img: 'g1.jpg' },
+      { id: 'g2', nombre: 'Dandy Retro Marrón', desc: 'Estilo retro con parche frontal', precio: 450, img: 'g2.jpg'},
+      { id: 'g3', nombre: 'Dandy Sport Blanco', desc: 'Ligera y transpirable para diario', precio: 390, img: 'g3.jpg' },
+      { id: 'g4', nombre: 'Dandy Luxe Azul', desc: 'Gorra de edición limitada con detalles metálicos', precio: 570, img: 'g4.jpg' }
+    ];
+
+    // llaves en localStorage
+    const STORAGE_VOTES = 'gorras_dandy_votes_v1'; // guarda votos por usuario (local)
+    const STORAGE_COUNTS = 'gorras_dandy_counts_v1'; // guarda contadores totales (persisten por navegador)
+
+    // inicializar contadores si no existen
+    function loadCounts(){
+      const raw = localStorage.getItem(STORAGE_COUNTS);
+      if(raw) return JSON.parse(raw);
+      // contador inicial (todos 0)
+      const counts = {};
+      gorras.forEach(g => counts[g.id] = {likes:0,dislikes:0});
+      localStorage.setItem(STORAGE_COUNTS, JSON.stringify(counts));
+      return counts;
+    }
+
+    function loadVotes(){
+      const raw = localStorage.getItem(STORAGE_VOTES);
+      if(raw) return JSON.parse(raw);
+      return {}; // mapa id -> 'like'|'dislike'
+    }
+
+    function saveCounts(counts){ localStorage.setItem(STORAGE_COUNTS, JSON.stringify(counts)); }
+    function saveVotes(votes){ localStorage.setItem(STORAGE_VOTES, JSON.stringify(votes)); }
+
+    // render
+    const catalog = document.getElementById('catalog');
+    const totalBadge = document.getElementById('totalVotes');
+
+    function render(){
+      const counts = loadCounts();
+      const votes = loadVotes();
+      catalog.innerHTML = '';
+
+      let totalLikes=0, totalDislikes=0;
+
+      gorras.forEach(g=>{
+        const c = counts[g.id] || {likes:0,dislikes:0};
+        totalLikes += c.likes; totalDislikes += c.dislikes;
+
+        // tarjeta
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="cap-img" style="background-image:url('${g.img}')"></div>
+          <div class="cap-title">
+            <h3>${g.nombre}</h3>
+            <div class="price">$ ${g.precio}</div>
+          </div>
+          <p class="desc">${g.desc}</p>
+          <div class="actions">
+            <button class="btn like" data-id="${g.id}" title="Like"> 
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-6.716-4.35-9.5-6.5C.98 12.9 2.03 8.5 5.5 6.5 7.5 5.3 9.6 5.7 12 7.3c2.4-1.6 4.5-2 6.5-0.8 3.47 2 4.52 6.4 2.99 8.0C18.716 16.65 12 21 12 21z"/></svg>
+              <span class="counts">${c.likes}</span>
+            </button>
+
+            <button class="btn dislike" data-id="${g.id}" title="Dislike">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3s6.716 4.35 9.5 6.5C23.02 11.1 21.97 15.5 18.5 17.5 16.5 18.7 14.4 18.3 12 16.7c-2.4 1.6-4.5 2-6.5 0.8C1.53 15.5.48 11.1 2 9.5 4.784 7.35 12 3 12 3z"/></svg>
+              <span class="counts">${c.dislikes}</span>
+            </button>
+
+          </div>
+        `;
+
+        // marcar si el usuario ya votó
+        const likeBtn = card.querySelector('.like');
+        const dislikeBtn = card.querySelector('.dislike');
+        const userVote = votes[g.id];
+        if(userVote === 'like') likeBtn.classList.add('on');
+        if(userVote === 'dislike') dislikeBtn.classList.add('on');
+
+        // listeners
+        likeBtn.addEventListener('click', ()=> handleVote(g.id, 'like'));
+        dislikeBtn.addEventListener('click', ()=> handleVote(g.id, 'dislike'));
+
+        catalog.appendChild(card);
+      });
+
+      totalBadge.textContent = `Likes: ${totalLikes} · Dislikes: ${totalDislikes}`;
+    }
+
+    // manejar lógica: un voto por gorra por "cuenta" (navegador)
+    function handleVote(id, type){
+      const counts = loadCounts();
+      const votes = loadVotes();
+
+      const prev = votes[id];
+      if(prev === type){
+        // si hace click otra vez en el mismo voto, se quita (toggle off)
+        delete votes[id];
+        if(type === 'like') counts[id].likes = Math.max(0, counts[id].likes - 1);
+        else counts[id].dislikes = Math.max(0, counts[id].dislikes - 1);
+      } else {
+        // si había voto contrario, restamos antes
+        if(prev === 'like') counts[id].likes = Math.max(0, counts[id].likes - 1);
+        if(prev === 'dislike') counts[id].dislikes = Math.max(0, counts[id].dislikes - 1);
+
+        // aplicar nuevo voto
+        votes[id] = type;
+        if(type === 'like') counts[id].likes = (counts[id].likes || 0) + 1;
+        else counts[id].dislikes = (counts[id].dislikes || 0) + 1;
+      }
+
+      saveVotes(votes);
+      saveCounts(counts);
+      render();
+    }
+
+    // inicial setup: asegurarnos que cada gorra tiene contador
+    (function init(){
+      const counts = loadCounts();
+      let modified = false;
+      gorras.forEach(g=>{
+        if(!counts[g.id]){ counts[g.id] = {likes:0,dislikes:0}; modified = true; }
+      });
+      if(modified) saveCounts(counts);
+      render();
+    })();
+
+    // advertencia: esto guarda datos solo en este navegador. Si quieres "por cuenta" real necesitas backend + autenticación.
+  </script>
+</body>
+</html>
